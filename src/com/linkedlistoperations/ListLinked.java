@@ -2,38 +2,47 @@ package com.linkedlistoperations;
 
 public class ListLinked {
     Node head;
-   public class Node{
+
+    public class Node {
         String data;
         Node next;
-        Node(String data){
+
+        Node(String data) {
             this.data = data;
             this.next = null;
         }
 
     }
+
     // Add method
-    public void addFirst(String data){
+    public void append(String data) {
         Node newNode = new Node(data);
-        if (head == null){
+        if (head == null) {
             head = newNode;
             return;
         }
-        newNode.next = head;
-        head = newNode;
-    }
-    public void printList(){
         Node currentNode = head;
-        while (currentNode != null){
+        while (currentNode.next != null) {
+            currentNode = currentNode.next;
+        }
+        currentNode.next = newNode;
+
+    }
+
+    public void printList() {
+        Node currentNode = head;
+        while (currentNode != null) {
             System.out.print(currentNode.data + "->");
             currentNode = currentNode.next;
         }
         System.out.println("NULL");
     }
+
     public static void main(String[] args) {
         ListLinked ll = new ListLinked();
-        ll.addFirst("70");
-        ll.addFirst("30");
-        ll.addFirst("56");
+        ll.append("56");
+        ll.append("30");
+        ll.append("70");
         ll.printList();
 
     }
