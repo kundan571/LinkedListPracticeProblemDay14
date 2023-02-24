@@ -45,6 +45,17 @@ public class ListLinked {
         previousNode.next = insertNode;
 
     }
+    public void deleteFirst(){
+        if (head == null){
+            System.out.println("List is empty: ");
+            return;
+        }
+        else {
+            Node temp = head;
+            head = head.next;
+            return;
+        }
+    }
 
     public void printList() {
         if (head == null) {
@@ -65,6 +76,8 @@ public class ListLinked {
         ll.append("70");
         ll.printList();
         ll.insertAt("30", 1);
+        ll.printList();
+        ll.deleteFirst();
         ll.printList();
 
     }
