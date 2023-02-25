@@ -4,10 +4,10 @@ public class ListLinked {
     Node head;
 
     public class Node {
-        String data;
+        int data;
         Node next;
 
-        Node(String data) {
+        Node(int data) {
             this.data = data;
             this.next = null;
         }
@@ -15,7 +15,7 @@ public class ListLinked {
     }
 
     // Append method
-    public void append(String data) {
+    public void append(int data) {
         Node newNode = new Node(data);
         if (head == null) {
             head = newNode;
@@ -30,7 +30,7 @@ public class ListLinked {
     }
 
     // Insert at any position
-    public void insertAt(String data, int pos) {
+    public void insertAt(int data, int pos) {
         Node insertNode = new Node(data);
         // if list is empty
         if (head == null) {
@@ -75,16 +75,39 @@ public class ListLinked {
         }
         System.out.println("NULL");
     }
-
+    public int search(int element){
+        int index = 0;
+        Node current = head;
+        if(head == null){
+            System.out.println("List is empty: ");
+            return -1;
+        }
+        while (current != null){
+            if (current.data == element){
+               return index;
+            }
+            index++;
+            current = current.next;
+        }
+        return -1;
+    }
     public static void main(String[] args) {
         ListLinked ll = new ListLinked();
-        ll.append("56");
-        ll.append("70");
+        ll.append(56);
+        ll.append(70);
         ll.printList();
-        ll.insertAt("30", 1);
+        ll.insertAt(30, 1);
         ll.printList();
-        ll.deleteLast();
-        ll.printList();
+      //  ll.deleteLast();
+        //ll.printList();
+       int ans = ll.search(30);
+       if (ans == -1){
+           System.out.println("element not found in List: ");
+       }
+       else {
+           System.out.println("Element Found at: " + ans);
+       }
+
 
     }
 }
