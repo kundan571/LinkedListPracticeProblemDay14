@@ -107,7 +107,8 @@ public class ListLinked {
        else {
            System.out.println("Element Found at: " + ans);
        }
-
+        ll.insertAt(40,ans+1);
+       ll.printList();
 
     }
 }
