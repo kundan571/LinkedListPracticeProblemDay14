@@ -7,7 +7,7 @@ public class ListLinked {
         int data;
         Node next;
 
-        Node(int data) {
+      public Node(int data) {
             this.data = data;
             this.next = null;
         }
@@ -91,6 +91,24 @@ public class ListLinked {
         }
         return -1;
     }
+    void deleteNodeAt(int key){
+        Node temp = head;
+        Node previous = head;
+        if (temp == null){
+            System.out.println("List is empty: ");
+            return;
+        }
+        if (temp != null && temp.data == key){
+            head = temp.next;
+            return;
+        }
+        while (temp != null && temp.data != key){
+            previous = temp;
+            temp = temp.next;
+        }
+        previous.next = temp.next;
+
+    }
     public static void main(String[] args) {
         ListLinked ll = new ListLinked();
         ll.append(56);
@@ -98,17 +116,21 @@ public class ListLinked {
         ll.printList();
         ll.insertAt(30, 1);
         ll.printList();
-      //  ll.deleteLast();
+        //  ll.deleteLast();
         //ll.printList();
-       int ans = ll.search(30);
-       if (ans == -1){
-           System.out.println("element not found in List: ");
-       }
-       else {
-           System.out.println("Element Found at: " + ans);
-       }
-        ll.insertAt(40,ans+1);
-       ll.printList();
+        int ans = ll.search(30);
+        if (ans == -1){
+            System.out.println("Element not found in List: ");
+        }
+        else {
+            System.out.println("Element found At: " + ans);
+        }
+
+        ll.insertAt(40, ans + 1);
+        ll.printList();
+        ll.deleteNodeAt(40);
+        ll.printList();
 
     }
 }
+
